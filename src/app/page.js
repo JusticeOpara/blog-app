@@ -1,10 +1,19 @@
+import CardList from "@/components/CardList";
+import Featured from "@/components/Featured";
 
 
 
 export default function Home() {
   return (
-    <main className="bg-gray-500">
-      
-    </main>
+    
+      <div className="">
+      {/* <Featured />
+      <CategoryList />
+      <div className="content">
+        <CardList/>
+        <Menu />
+      </div> */}
+    </div>
+
   )
 }
