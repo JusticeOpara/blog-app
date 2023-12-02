@@ -6,13 +6,16 @@ import Menu from "@/components/Menu";
 
 
 export default function Home() {
+
+  // const page = parseInt(searchParams.page) || 1;
+
   return (
     
       <div className="">
       <Featured />
      <CategoryList />
       <div className="flex gap-[50px]">
-        <CardList/>
+        <CardList />
         <Menu />
       </div> 
     </div>

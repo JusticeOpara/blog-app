@@ -21,6 +21,8 @@ export default function RootLayout({ children }) {
         {/* <ThemeContextProvider>
           <ThemeProvider> */}
         <AuthProvider>
+
+          
           <div className="min-h-[100vh] bg-slate-300 ">
             <div
               className="max-w-[1536px] max-2xl:max-w-[1366px] max-xl:max-w-[1024px] 

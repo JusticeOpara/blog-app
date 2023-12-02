@@ -2,7 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const CategoryList = () => {
+
+
+const getData = async ()=>{
+  const res = await fetch("/api/categories",{
+    catch: "no-store",
+  })
+ if (!res.ok){
+  throw new Error("Failed")
+ }
+ return res.json
+}
+const CategoryList = async() => {
+  // const data = await getData()
+  // console.log(data,"--data")
+
+  
   return (
     <div>
       <h1>Popular Catergories</h1>

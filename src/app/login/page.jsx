@@ -1,20 +1,19 @@
-"use client";
+
+  "use client";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-
 const LoginPage = () => {
-  const { data, status } = useSession();
-
-  console.log(data, status, "--daata");
+  const { status } = useSession();
 
   const router = useRouter();
 
   if (status === "loading") {
-    return <div>Loading</div>;
+    return <div className=" italic">Loading...</div>;
   }
+
   if (status === "authenticated") {
-    router.push("/");
+    router.push("/")
   }
 
   return (
