@@ -9,7 +9,7 @@ import "react-quill/dist/quill.bubble.css";
 
 const WritePage = () => {
   const [open, setOpen] = useState(false);
-  const [value,setValue] = useState(true)
+  const [value,setValue] = useState("")
   const { status } = useSession();
 
   console.log(status, "--StatusData");

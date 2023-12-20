@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-// import ThemeToggle from "./ThemeToggle";
+ import ThemeToggle from "./ThemeToggle";
 import AuthLink from "./AuthLink";
 
 
@@ -12,9 +12,9 @@ const Navbar = () => {
 
 
         <div className="flex gap-2 items-center bg-white">
-         {/* <ThemeToggle />  */}
+          <ThemeToggle />  
          
-          <Link href={''} className="text-base font leading-normal">Home</Link>
+          
           <Link href={''} className="text-base leading-normal">Contact</Link>
           <Link href={''} className="text-base leading-normal">About</Link>
           

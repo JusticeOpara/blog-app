@@ -5,6 +5,7 @@ import { ThemeContext } from "@/Context/ThemeContext";
 
 const ThemeProvider = ({ childern }) => {
   const { theme } = useContext(ThemeContext);
+  console.log(theme,"theme")
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
