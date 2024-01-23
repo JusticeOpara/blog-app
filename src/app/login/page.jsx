@@ -3,8 +3,8 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
-  const { status } = useSession();
-   console.log(status,"--status --useSession")
+  const {data, status } = useSession();
+   console.log(data,status,"--status --useSession")
 
   const router = useRouter();
 
@@ -13,7 +13,8 @@ const LoginPage = () => {
   }
 
   if (status === "authenticated") {
-    router.push("/")
+    console.log("authenticated")
+   router.push("/")
   }
 
   return (

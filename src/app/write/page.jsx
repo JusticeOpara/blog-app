@@ -20,10 +20,11 @@ const WritePage = () => {
     return <div>Loading</div>;
   }
   if (status === "authenticated") {
+    console.log("authenticated or not")
     router.push("/");
   }
   return (
-    <div className="relative flex flex-col">
+    <div className="relative flex flex-col bg-blue-400">
       <input
         placeholder="Title"
         text="Text"
@@ -61,7 +62,7 @@ const WritePage = () => {
           </div>
         )}
         <ReactQuill
-          className='w-[100%] bg-red-800'
+          className='w-[100%] bg-white'
           theme="bubble"
           value={value}
           onChange={setValue}
