@@ -20,7 +20,7 @@ const CardList = async({page}) => {
 
   return (
     <div className="flex-[5]">
-    <h1 className="">Recent Posts</h1>
+    <h1 className="text-3xl font-bold leading-normal">Recent Posts</h1>
     {/* {data?.map(items=>(
       <Card key={items.id}/>
     ))} */}

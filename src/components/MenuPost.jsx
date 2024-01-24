@@ -20,7 +20,7 @@ const MenuPost = (withImage) => {
           <span className="py-[3px] px-[8px] rounded-[10px] text-[14px] text-white w-max bg-[#ff7857]">
             Travel
           </span>
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+          <h3 className="text-base text-[#718096]">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
           <div className="text-xs font-medium flex gap-2">
             <span>John Doe </span> -<span>10.02.2023</span>
           </div>
@@ -42,7 +42,7 @@ const MenuPost = (withImage) => {
           <span className="py-[3px] px-[8px] rounded-[10px] text-[14px] text-white w-max bg-blue-300">
             Food
           </span>
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+          <h3 className="text-base text-[#718096]">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
           <div className="text-xs font-medium flex gap-2">
             <span>John Doe </span> -<span>10.02.2023</span>
           </div>
@@ -65,7 +65,7 @@ const MenuPost = (withImage) => {
           <span className="py-[3px] px-[8px] rounded-[10px] text-[14px] text-white w-max bg-orange-300">
             fashoin
           </span>
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
+          <h3 className="text-base text-[#718096]">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h3>
           <div className="text-xs font-medium flex gap-2">
             <span>John Doe </span> -<span>10.02.2023</span>
           </div>

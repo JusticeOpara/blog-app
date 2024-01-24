@@ -23,10 +23,10 @@ export default function RootLayout({ children }) {
           <ThemeProvider> 
         */}
 
-          <div className="min-h-[100vh] bg-slate-300 ">
+          <div className="min-h-[100vh] bg-slate-500  ">
             <div
               className="max-w-[1536px] max-2xl:max-w-[1366px] max-xl:max-w-[1024px] 
-          max-lg:max-w-[768px] max-md:max-w-[640px] max-sm:max-w-[475px] ml-auto mr-auto pl-20 pr-20 bg-purple-300 "
+          max-lg:max-w-[768px] max-md:max-w-[640px] max-sm:max-w-[475px] mx-auto lg:px-20 bg-[#fff] "
             >
               <Navbar />
 
