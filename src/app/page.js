@@ -3,22 +3,17 @@ import Featured from "@/components/Featured";
 import CardList from "@/components/CardList";
 import Menu from "@/components/Menu";
 
-
-
-export default function Home() {
-
-  // const page = parseInt(searchParams.page) || 1;
+export default function Home(searchParams) {
+  const page = parseInt(searchParams.page) || 1;
 
   return (
-    
-      <div className="">
+    <div className="">
       <Featured />
-     <CategoryList />
+      <CategoryList />
       <div className="flex gap-[50px]">
-        <CardList />
+        <CardList page={page} />
         <Menu />
-      </div> 
+      </div>
     </div>
-
-  )
+  );
 }

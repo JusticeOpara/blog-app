@@ -3,6 +3,9 @@ import React from "react";
 import Image from "next/image";
 import Comments from "@/components/Comments";
 
+
+
+
 const SinglePage = () => {
   return (
     <div className="">

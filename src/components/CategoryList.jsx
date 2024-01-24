@@ -4,86 +4,51 @@ import React from "react";
 
 
 
-const getData = async ()=>{
-  const res = await fetch("/api/categories",{
-    catch: "no-store",
-  })
- if (!res.ok){
-  throw new Error("Failed")
- }
- return res.json
-}
+const getData = async () => {
+  const res = await fetch("http://localhost:3000/api/categories", {
+    cache: "no-store", 
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed hfshfhsjsd");
+  }
+
+  return res.json(); 
+};
+
+
+
 const CategoryList = async() => {
-  // const data = await getData()
-  // console.log(data,"--data")
+   const data = await getData()
+
+
+   console.log(data,"--datajfksdfsdfdfdjslkfjlks")
 
   
   return (
     <div>
       <h1>Popular Catergories</h1>
       <div className="flex flex-wrap justify-between gap-[20px]">
-        <div className="flex items-center gap-[10px] capitalize w-[15%] h-[80px] justify-center border-[10px] bg-red-200">
+       
+          {data?.map((item) => (
           <Link
             href="/blog?cat=style"
-            className={`${"flex flex-wrap justify-between gap-[20px] text-center"} `}
+            className={`${"flex flex-wrap justify-between gap-[20px] text-center"} ${item.slug}`}
+            key={item._id}
           >
-            <Image
-              src="/food.png"
-              className="rounded-[40%] "
-              width={50}
-              height={50}
-              alt="food"
-            />
-            fruit
+            {item.img && (
+              <Image
+                src={item.img}
+                alt="images"
+                width={50}
+                height={50}
+                className="rounded-2xl"
+              />
+            )}
+            {item.title}
           </Link>
-        </div>
-        <div className="flex items-center gap-[10px] capitalize w-[15%] h-[80px] justify-center border-[10px] bg-zinc-400">
-          <Link
-            href="/blog?cat=style"
-            className={`${"flex flex-wrap justify-between gap-[20px]"} `}
-          >
-            <Image
-              src="/food.png"
-              className="rounded-[40%] "
-              width={50}
-              height={50}
-              alt="food"
-            />
-            travel
-          </Link>
-        </div>
-
-        <div className="flex items-center gap-[10px] capitalize w-[15%] h-[80px] justify-center border-[10px] bg-purple-300">
-          <Link
-            href="/blog?cat=style"
-            className={`${"flex flex-wrap justify-between gap-[20px]"} `}
-          >
-            <Image
-              src="/food.png"
-              className="rounded-[40%] "
-              width={50}
-              height={50}
-              alt="food"
-            />
-            food
-          </Link>
-        </div>
-
-        <div className="flex items-center gap-[10px] capitalize w-[15%] h-[80px] justify-center border-[10px] bg-sky-200">
-          <Link
-            href="/blog?cat=style"
-            className={`${"flex flex-wrap justify-between gap-[20px]"} `}
-          >
-            <Image
-              src="/food.png"
-              className="rounded-[40%] "
-              width={50}
-              height={50}
-              alt="food"
-            />
-            fashion
-          </Link>
-        </div>
+        ))}
+        
       </div>
     </div>
   );

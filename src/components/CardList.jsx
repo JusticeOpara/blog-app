@@ -2,11 +2,28 @@ import React from "react";
 import Pagination from "./Pagination";
 import Card from "./Card";
 
-const CardList = () => {
+
+const getData = async () => {
+  const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
+    cache: "no-store", 
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed hfshfhsjsd");
+  }
+
+  return res.json(); 
+};
+
+const CardList = async({page}) => {
+  // const data = await getData(page)
+
   return (
     <div className="flex-[5]">
     <h1 className="">Recent Posts</h1>
-    
+    {/* {data?.map(items=>(
+      <Card key={items.id}/>
+    ))} */}
       <div className="my-[50px]">
         <Card />
         <Card />
