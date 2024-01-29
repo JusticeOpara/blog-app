@@ -10,7 +10,7 @@ const Comments = () => {
       {status === "authenticated" ? (
         <div className="flex items-center justify-between gap-[30px]">
          
-          <textarea placeholder="write a comment..." className="p-[20px] w-full"></textarea>
+          <textarea placeholder="write a comment..." className="p-[20px] w-full outline"></textarea>
 
 
           <button className="py-[16px] px-[20px] bg-gray-400 text-white font-bold border-none rounded-md cursor-pointer"> Send</button>
@@ -31,11 +31,11 @@ const Comments = () => {
             width={50}
             alt="food"
           />
-          <div className="flex flex-col gap-[5px] ">
+          <div className="flex flex-col gap-[5px] text-base">
             <span>John Doe</span>
             <span>01.01.2021</span>
           </div>
-          <p className="text-lg font-normal ">
+          <p className="text-base text-[#718096]">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus,
             reprehenderit dolor! Fuga repellendus maxime vel cumque consectetur
             sequi nihil aperiam perferendis reiciendis atque ad eligendi a

@@ -1,15 +1,26 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 //  import ThemeToggle from "./ThemeToggle";
 import AuthLink from "./AuthLink";
 import Image from "next/image";
+import { useState } from "react";
 
 const Navbar = () => {
-  return (
-    <nav className="w-full flex justify-between items-center h-[70px] bg-blue-300">
-      <h1 className="font-bold text-xl text-black">JustyBlog.</h1>
+  const [isExpanded, setIsExpanded] = useState(false);
 
-      <div className=" h-full flex gap-4 xl:gap-6 items-center bg-white">
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+  return (
+    <nav className=" top-[0] left-[0] w-full flex justify-between items-center h-[70px]">
+      <Link href="/">
+      <h1 className="font-bold text-xl text-black cursor-pointer">JustyBlog.</h1>
+      </Link>
+      
+
+      <div className="h-full lg:flex gap-4 xl:gap-6 items-center bg-white hidden">
         <Image src="/search.svg" width={24} height={24} alt="social icon" />
         <input className="outline-none " placeholder="Search..." />
 
@@ -26,13 +37,46 @@ const Navbar = () => {
         <Link href="/about" className="text-base font-normal">
           About
         </Link>
-
-        <AuthLink />
+       {/* the auth functionality is not working for now */}
+        <AuthLink /> 
 
         <Image src="/instagram.svg" width={24} height={24} alt="social icon" />
         <Image src="/twitter.svg" width={24} height={24} alt="social icon" />
         <Image src="/linkedin.svg" width={24} height={24} alt="social icon" />
       </div>
+
+      <div onClick={handleToggle} className="block  md:hidden">
+        <Image src="/bar.svg" width={24} height={24} alt="navbar" />
+      </div>
+      <div
+          className={
+            isExpanded ? 'h-full fixed absodlute left-0 top-0 w-full mx-auto z-50 block mt-16  ease-in-out flex-col md:hidden bg-white' : 'absolute left-[-100%]'
+          }
+        >
+          <ul
+            onClick={handleToggle}
+            className=' w-full h-screen md:hidden'
+          >
+            <li>
+            <Link href="/" className="text-base font-normal">
+          {" "}
+          Home
+        </Link>
+            </li>
+            <li> <Link href={""} className="text-base font-normal">
+          Contact
+        </Link></li>
+            <li>
+            <Link href="/about" className="text-base font-normal">
+          About
+        </Link>
+            </li>
+
+
+            <AuthLink />
+            
+          </ul>
+        </div>
     </nav>
   );
 };

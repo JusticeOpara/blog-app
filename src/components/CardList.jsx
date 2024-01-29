@@ -24,7 +24,7 @@ const CardList = async({page}) => {
     {/* {data?.map(items=>(
       <Card key={items.id}/>
     ))} */}
-      <div className="my-[50px]">
+      <div className="md:my-[50px] my-8">
         <Card />
         <Card />
       </div>

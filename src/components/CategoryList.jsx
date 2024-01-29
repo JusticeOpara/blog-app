@@ -28,10 +28,10 @@ const CategoryList = async() => {
 
   
   return (
-    <div className="w-full flex flex-col gap-[50px]">
+    <div className="w-full flex flex-col gap-6 bg-slate-500">
       <h1 className="text-3xl font-bold leading-normal">Popular Catergories</h1>
       
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap justify-between gap-4 lg:gap-0">
        
           {data?.map((item) => (
           <Link
@@ -40,12 +40,13 @@ const CategoryList = async() => {
             key={item._id}
           >
             {item.img && (
+
               <Image
                 src={item.img}
                 alt="images"
-                width={50}
-                height={50}
-                className="rounded-[50%]"
+                width={100}
+                height={100}
+                className="rounded-[50%] object-cover"
               />
             )}
             <span className="text-[#4A5568] text-base font-medium capitalize">

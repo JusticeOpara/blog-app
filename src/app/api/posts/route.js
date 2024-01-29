@@ -21,8 +21,6 @@ export const GET = async (req) => {
 
 
 
-
-
   
   
   try {

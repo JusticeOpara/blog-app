@@ -3,20 +3,21 @@ import Image from "next/image";
 
 const Featured = () => {
   return (
-    <div className="mt-[60px] flex justify-center items-center  w-full h-[500px] gap-[50px] bg-[#FBFBFB]">
-      <div className="w-[454px]">
-       <h1 className="font-bold text-6xl">Here Justy dev here</h1>
-     
-       <p className="text-[#4A5568] text-3xl font-normal">Discover my stories and creative ideals</p>
+    <div className="mt-[60px] flex md:flex-row flex-col justify-center items-center w-full h-[500px] md:gap-[50px] bg-green-500 [#FBFBFB] md:bg-red-500 lg:bg-blue-500">
+      <div className="md:w-[454px] w-full">
+        
+        <h1 className="font-bold md:text-6xl text-3xl">Here Justy dev here </h1>
+  
+       <p className="text-[#4A5568] md:text-3xl font-medium text-lg">Discover my stories and creative ideals</p>
       </div>
 
-      <div className="relative h-full w-[500px]">
+      <div className="relative h-full md:w-[500px] w-full">
      
         <Image
           src="/hero.png"
           fill
           objectFit="contain"
-          alt="tech pics"
+          alt="a picture of a team"
           className="object-contain"
         />
       </div>

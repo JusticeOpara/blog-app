@@ -1,4 +1,5 @@
 "use client";
+
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -13,7 +14,7 @@ const LoginPage = () => {
   }
 
   if (status === "authenticated") {
-    console.log("authenticated")
+    
    router.push("/")
   }
 

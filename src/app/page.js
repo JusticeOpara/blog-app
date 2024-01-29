@@ -12,7 +12,7 @@ export default function Home(searchParams) {
 
       <CategoryList />
 
-      <div className="flex gap-[50px] ">
+      <div className="flex gap-[50px] lg:flex-row flex-col ">
         <CardList page={page} />
         <Menu />
       </div>
