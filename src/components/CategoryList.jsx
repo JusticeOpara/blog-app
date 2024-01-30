@@ -28,7 +28,7 @@ const CategoryList = async() => {
 
   
   return (
-    <div className="w-full flex flex-col gap-6 bg-slate-500">
+    <div className="w-full flex flex-col gap-6">
       <h1 className="text-3xl font-bold leading-normal">Popular Catergories</h1>
       
       <div className="flex flex-wrap justify-between gap-4 lg:gap-0">
@@ -36,7 +36,7 @@ const CategoryList = async() => {
           {data?.map((item) => (
           <Link
             href="/blog?cat=style"
-            className={`${"flex flex-wrap justify-between items-center gap-[20px] text-center bg-[#F7FAFC] px-6 rounded-lg"} ${item.slug}`}
+            className={`${"flex flex-wrap justify-between items-center gap-[20px] py-2 text-center bg-[#F7FAFC] px-6 rounded-lg"} ${item.slug}`}
             key={item._id}
           >
             {item.img && (
@@ -46,7 +46,7 @@ const CategoryList = async() => {
                 alt="images"
                 width={100}
                 height={100}
-                className="rounded-[50%] object-cover"
+                className="rounded-[50%] object-cover max-sm:w-[30px]"
               />
             )}
             <span className="text-[#4A5568] text-base font-medium capitalize">

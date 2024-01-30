@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Featured = () => {
   return (
-    <div className="mt-[60px] flex md:flex-row flex-col justify-center items-center w-full h-[500px] md:gap-[50px] bg-green-500 [#FBFBFB] md:bg-red-500 lg:bg-blue-500">
+    <div className="md:mt-[50px] mt-5 flex md:flex-row flex-col justify-center items-center w-full h-[500px] md:gap-[50px] max-sm:h-[400px] bg-green-500 [#FBFBFB] md:bg-red-500 lg:bg-blue-500">
       <div className="md:w-[454px] w-full">
         
         <h1 className="font-bold md:text-6xl text-3xl">Here Justy dev here </h1>

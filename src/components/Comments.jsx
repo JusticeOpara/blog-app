@@ -23,10 +23,10 @@ const Comments = () => {
         <div className="">
 
         </div>
-        <div className="flex items-center gap-[20px] mb-[20px] ">
+        <div className="flex max-sm:flex-col items-center gap-[20px] mb-[20px] ">
           <Image
             src="/food.png"
-            className="object-cover"
+            className="object-cover rounded-[50%]"
             height={50}
             width={50}
             alt="food"
@@ -35,7 +35,7 @@ const Comments = () => {
             <span>John Doe</span>
             <span>01.01.2021</span>
           </div>
-          <p className="text-base text-[#718096]">
+          <p className="text-base text-[#718096] max-sm:text-xs">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus,
             reprehenderit dolor! Fuga repellendus maxime vel cumque consectetur
             sequi nihil aperiam perferendis reiciendis atque ad eligendi a

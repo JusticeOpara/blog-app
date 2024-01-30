@@ -16,7 +16,7 @@ const getData = async () => {
 };
 
 const CardList = async({page}) => {
-  // const data = await getData(page)
+  //  const data = await getData(page)
 
   return (
     <div className="flex-[5]">

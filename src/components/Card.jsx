@@ -7,20 +7,20 @@ import Link from 'next/link'
 
 const Card = () => {
   return (
-    <div className="mb-[50px] flex items-center gap-[50px]">
+    <div className="mb-[50px] flex items-center gap-[50px] ">
       
         <div className="flex-[1] h-[350px] relative">
           <Image src="/food.png" alt="food" fill className="object-cover rounded-lg" />
         </div>
     
-      <div className="flex-[1] flex flex-col md:gap-[30px] gap-4">
+      <div className="flex-[1] flex flex-col md:gap-[30px] gap-4 max-sm:gap-1">
         <div className="text-sm text-[#718096]">
           <span className="">11.02.2023 </span>
           <span className="uppercase">CULTURE</span>
         </div>
 
         <Link href='/'>
-          <h1 className='font-bold text-xl text-[#2D3748]'>Total TypeScript: Professional TypeScript Training by Matt ...</h1>
+          <h1 className='font-bold text-xl text-[#2D3748] max-sm:text-base'>Total TypeScript: Professional TypeScript Training by Matt ...</h1>
           
         </Link>
         <p className="md:text-base text-xs text-[#718096]">

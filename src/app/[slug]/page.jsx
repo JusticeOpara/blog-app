@@ -5,8 +5,8 @@ import Comments from "@/components/Comments";
 
 const SinglePage = () => {
   return (
-    <div className="flex flex-col gap-24">
-      <div className="flex flex-col mt-12">
+    <div className="flex flex-col gap-24 max-sm:gap-6 md:mt-[50px] mt-5">
+      <div className="flex flex-col">
         <div className="w-full h-[500px] relative">
           <Image
             src="/blog.png"
@@ -17,16 +17,16 @@ const SinglePage = () => {
         </div>
 
         <div className="flex w-full justify-between items-center">
-          <span className="text-sm flex justify-end italic font-light">
+          <span className="text-sm flex justify-end italic font-light max-sm:text-[10px]">
             Joe Doe - 11.02.2023{" "}
           </span>
-          <span className="text-sm flex justify-end italic font-light border-b border-black">
+          <span className="text-sm flex justify-end italic font-light border-b border-black max-sm:text-[8px]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit
           </span>
         </div>
       </div>
 
-      <div className="flex gap-[50px]">
+      <div className="flex flex-row max-sm:flex-col gap-[50px]">
         <div className="flex-[5] ">
           <div className="font-normal mb-[20px] gap-1 flex flex-col ">
             <p className="text-base text-[#718096]">
