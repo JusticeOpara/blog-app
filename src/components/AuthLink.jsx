@@ -85,9 +85,9 @@ const AuthLinks = () => {
         </>
       )}
       <div className=" " onClick={() => setOpen(!open)}>
-        <div className=""></div>
-        <div className=""></div>
-        <div className=""></div>
+        <div className="">jhjhjkhk</div>
+        <div className="">lkjkkj</div>
+        <div className="">lkjjkjkkjkj</div>
       </div>
       {open && (
         <div className="cursor-pointer">

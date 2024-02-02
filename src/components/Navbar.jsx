@@ -1,13 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-//  import ThemeToggle from "./ThemeToggle";
 import AuthLink from "./AuthLink";
 import Image from "next/image";
-import { useState } from "react";
 
 const Navbar = () => {
+  const session = useSession();
+  console.log(session, "session");
+  const status = session.status;
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggle = () => {
@@ -27,19 +29,39 @@ const Navbar = () => {
 
         {/* <ThemeToggle />   */}
 
-        <Link href="/" className="text-base font-normal">
+        <Link href="/" className="text-base font-normal cursor-pointer">
           {" "}
           Home
         </Link>
-        <Link href={""} className="text-base font-normal">
-          Contact
-        </Link>
-
-        <Link href="/about" className="text-base font-normal">
+        <Link href="/about" className="text-base font-normal cursor-pointer">
           About
         </Link>
+
+        {status === "authenticated" && (
+          <button
+          onClick={()=> signOut()}
+            className="text-base font-normal cursor-pointer border bg-red-300"
+          >
+            Logout
+          </button>
+        )}
+        {status !== "unauthenticated" && (
+          <>
+            <Link href="/login" className="cursor-pointer">
+              Login
+            </Link>
+
+            <Link
+              href="/register"
+              className="text-base font-normal cursor-pointer"
+            >
+              Register
+            </Link>
+          </>
+        )}
+
         {/* the auth functionality is not working for now */}
-        <AuthLink />
+        {/* <AuthLink /> */}
         <Image src="/instagram.svg" width={24} height={24} alt="social icon" />
         <Image src="/twitter.svg" width={24} height={24} alt="social icon" />
         <Image src="/linkedin.svg" width={24} height={24} alt="social icon" />
