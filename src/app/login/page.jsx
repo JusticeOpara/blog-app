@@ -1,36 +1,35 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const LoginPage = () => {
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loginInProgress, setLoginInProgress] = useState(false);
-  const { data, status } = useSession();
-  console.log(data, status, "--status --useSession");
-
   const router = useRouter();
+  const [dataf, setDataf] = useState({ email: "", password: "" });
+ console.log(dataf,"login data")
+  const { data, status } = useSession();
+ console.log(data, status, "--status --useSession");
 
-  async function handleFormSubmit(e) {
+  // if (status === "loading") {
+  //   return <div className=" italic">Loading...</div>;
+  // }
+
+  // if (status === "authenticated") {
+  //   router.push("/");
+  // }
+
+  const loginUser = async (e) => {
     e.preventDefault();
-    setLoginInProgress(true);
-
-    await signIn("credentials", { email, password, callbackUrl: "/" });
-    setLoginInProgress(false);
-  }
-
-  if (status === "loading") {
-    return <div className=" italic">Loading...</div>;
-  }
-
-  if (status === "authenticated") {
-    router.push("/");
-  }
+    signIn('credentials',{
+      ...data,
+      redirect:false
+    })
+    router.push("/")
+  };
 
   return (
     <div className="w-full h-[75vh] bg-blue-300 flex items-center">
@@ -38,7 +37,7 @@ const LoginPage = () => {
         <Image src="/login-screen.png" className="" fill alt="login pic" />
       </div>
       <div className="w-full h-full flex flex-col justify-center">
-        <form className="lg:p-36 p-0" onSubmit={handleFormSubmit}>
+        <form className="lg:p-36 p-0" onSubmit={loginUser}>
           <span>WELCOME BACK</span>
           <h1 className="text-[25px] font-normal text-black">
             Log In to your Account
@@ -52,13 +51,16 @@ const LoginPage = () => {
               Email
             </label>
             <input
+              id="email"
               type="email"
-              value={email}
+              value={dataf.email}
               name="email"
               className="border border-[#424242] outline-none text-[#4A5568] text-base rounded-lg  block w-full p-3 "
               placeholder="justiceague404@gmail.com"
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={loginInProgress}
+              onChange={(e) => {
+                setDataf({ ...dataf, email: e.target.value });
+              }}
+              required
             />
           </div>
 
@@ -70,24 +72,26 @@ const LoginPage = () => {
               Password
             </label>
             <input
+              id="password"
               type="password"
               name="password"
-              value={password}
+              value={dataf.password}
               className="border text-[#4A5568] text-base rounded-lg  block w-full p-3 border-[#424242] outline-none"
               placeholder="***********"
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={loginInProgress}
+              onChange={(e) => {
+                setDataf({ ...dataf, password: e.target.value });
+              }}
+              required
             />
           </div>
 
           <button
             className="uppercase w-full h-[50px] bg-black text-white rounded-lg my-4"
             type="submit"
-            disabled={loginInProgress}
           >
             Continue
           </button>
-          
+
           <div className="flex items-center gap-3">
             <div className="text-center divide-y w-full h-[1px] bg-black"></div>
             <span className="">or</span>

@@ -3,13 +3,15 @@
 import React, { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import AuthLink from "./AuthLink";
 import Image from "next/image";
 
 const Navbar = () => {
   const session = useSession();
   console.log(session, "session");
-  const status = session.status;
+
+  const { status } = session.status;
+  console.log(status, "--session--status data");
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleToggle = () => {
@@ -37,17 +39,12 @@ const Navbar = () => {
           About
         </Link>
 
-        {status === "authenticated" && (
-          <button
-          onClick={()=> signOut()}
-            className="text-base font-normal cursor-pointer border bg-red-300"
-          >
-            Logout
-          </button>
-        )}
-        {status !== "unauthenticated" && (
+        {status === "unauthenticated" ? (
           <>
-            <Link href="/login" className="cursor-pointer">
+            <Link
+              href="/login"
+              className="cursor-pointer text-base font-normal"
+            >
               Login
             </Link>
 
@@ -58,10 +55,26 @@ const Navbar = () => {
               Register
             </Link>
           </>
+        ) : (
+          <>
+            <Link
+              href="/write"
+              className="text-base font-normal cursor-pointer"
+            >
+              Write
+            </Link>
+
+            <button
+              onClick={signOut}
+              className="text-base font-normal cursor-pointer border bg-red-300"
+            >
+              Logout
+            </button>
+          </>
         )}
 
         {/* the auth functionality is not working for now */}
-        {/* <AuthLink /> */}
+
         <Image src="/instagram.svg" width={24} height={24} alt="social icon" />
         <Image src="/twitter.svg" width={24} height={24} alt="social icon" />
         <Image src="/linkedin.svg" width={24} height={24} alt="social icon" />
@@ -103,7 +116,40 @@ const Navbar = () => {
 
           <li className="bg-[#F7FAFC] rounded-md h-14 w-full flex items-center p-6 gap-8 font-bold">
             <Image src="/login.svg" width={24} height={24} alt="home" />
-            <AuthLink />
+
+            {status === "unauthenticated" ? (
+              <>
+                <Link
+                  href="/login"
+                  className="cursor-pointer text-base font-normal"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  href="/register"
+                  className="text-base font-normal cursor-pointer"
+                >
+                  Register
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/write"
+                  className="text-base font-normal cursor-pointer"
+                >
+                  Write
+                </Link>
+
+                <button
+                  onClick={() => signOut()}
+                  className="text-base font-normal cursor-pointer border"
+                >
+                  Logout
+                </button>
+              </>
+            )}
           </li>
         </ul>
       </div>

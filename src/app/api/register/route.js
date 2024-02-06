@@ -1,19 +1,33 @@
-import {User} from "@/models/User";
-import bcrypt from "bcrypt";
-import mongoose from "mongoose";
+import bcrypt from 'bcrypt'
+import prisma from "../../../utils/connect"
+import { NextResponse } from 'next/server'
 
-export async function POST(req) {
-  const body = await req.json();
-  mongoose.connect(process.env.MONGO_URL);
-  const pass = body.password;
-  if (!pass?.length || pass.length < 5) {
-    new Error('password must be at least 5 characters');
-  }
+export async function POST(request){
+    const body = await request.json();
+    const { email, password } = body.data;
+ console.log(body.data,"body")
+    if( !email || !password) {
+        return new NextResponse('Missing email and password', { status: 400 })
+    }
 
-  const notHashedPassword = pass;
-  const salt = bcrypt.genSaltSync(10);
-  body.password = bcrypt.hashSync(notHashedPassword, salt);
+    const exist = await prisma.user.findUnique({
+        where: {
+            email
+        }
+    });
 
-  const createdUser = await User.create(body);
-  return Response.json(createdUser);
+    if(exist) {
+        throw new Error('Email already exists')
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await prisma.user.create({
+        data: {
+            email,
+            hashedPassword
+        }
+    });
+
+    return NextResponse.json(user)
 }

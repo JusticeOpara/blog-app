@@ -3,9 +3,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 
+const getData = async (page, cat) => {
+  const res = await fetch(
+    `http://localhost:3000/api/posts?page=${page}`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed");
+  }
+
+  return res.json();
+};
+
+const Card = async({page}) => {
+
+const data = await getData(page)
+console.log(data,"--getData")
 
 
-const Card = () => {
   return (
     <div className="mb-[50px] flex items-center gap-[50px] ">
       
