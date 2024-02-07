@@ -18,17 +18,20 @@ export const authOptions = {
       credentials: {
         username: {label: "Email", type: "email", placeholder: "test@example.com"},
         password: { label: "Password", type: "password" },
-        email: {label: "Email", type: "email", placeholder: "test@example.com"},
+        // email: {label: "Email", type: "email", placeholder: "test@example.com"},
       },
       async authorize(credentials) {
+        const email = credentials?.email;
+        console.log(email,"email")
+        const password = credentials?.password;
         // check if the email amd password is vaild
-        if (!credentials.email || !credentials.password) {
+        if (!email || !password) {
           throw new Error('Please enter an email and password')
         }
         // check if the user exists
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email:email,
           },
         });
 
@@ -36,7 +39,7 @@ export const authOptions = {
           throw new Error('No user found')
       }
 
-      const passwordMatch = await bcrypt.compare(credentials.password, user.hashedPassword)
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword)
 
       // if password does not match
       if (!passwordMatch) {
@@ -45,6 +48,7 @@ export const authOptions = {
 
       return user;
       },
+    
     }),
   ],
 

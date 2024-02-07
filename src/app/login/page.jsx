@@ -5,34 +5,34 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+
 
 const LoginPage = () => {
   const router = useRouter();
-  const [dataf, setDataf] = useState({ email: "", password: "" });
- console.log(dataf,"login data")
-  const { data, status } = useSession();
- console.log(data, status, "--status --useSession");
+  const [data, setData] = useState({ email: "", password: "" });
+  const [loginInProgress, setLoginInProgress] = useState(false)
+ console.log(data,"login data")
 
-  // if (status === "loading") {
-  //   return <div className=" italic">Loading...</div>;
-  // }
 
-  // if (status === "authenticated") {
-  //   router.push("/");
-  // }
 
   const loginUser = async (e) => {
     e.preventDefault();
+    setLoginInProgress(true);
+
     signIn('credentials',{
       ...data,
       redirect:false
     })
+
     router.push("/")
+    setLoginInProgress(false);
   };
+ 
+
+ 
 
   return (
-    <div className="w-full h-[75vh] bg-blue-300 flex items-center">
+    <div className="w-full h-[75vh]  flex items-center">
       <div className="w-full h-full relative hidden lg:block">
         <Image src="/login-screen.png" className="" fill alt="login pic" />
       </div>
@@ -53,12 +53,13 @@ const LoginPage = () => {
             <input
               id="email"
               type="email"
-              value={dataf.email}
+              value={data.email}
               name="email"
               className="border border-[#424242] outline-none text-[#4A5568] text-base rounded-lg  block w-full p-3 "
               placeholder="justiceague404@gmail.com"
+              disabled={loginInProgress}
               onChange={(e) => {
-                setDataf({ ...dataf, email: e.target.value });
+                setData({ ...data, email: e.target.value });
               }}
               required
             />
@@ -75,11 +76,12 @@ const LoginPage = () => {
               id="password"
               type="password"
               name="password"
-              value={dataf.password}
+              value={data.password}
               className="border text-[#4A5568] text-base rounded-lg  block w-full p-3 border-[#424242] outline-none"
               placeholder="***********"
+              disabled={loginInProgress}
               onChange={(e) => {
-                setDataf({ ...dataf, password: e.target.value });
+                setData({ ...data, password: e.target.value });
               }}
               required
             />
@@ -88,6 +90,7 @@ const LoginPage = () => {
           <button
             className="uppercase w-full h-[50px] bg-black text-white rounded-lg my-4"
             type="submit"
+            disabled={loginInProgress}
           >
             Continue
           </button>

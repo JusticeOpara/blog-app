@@ -3,26 +3,26 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ReactQuill from 'react-quill';
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+// import { useRouter } from "next/navigation";
+// import { useSession } from "next-auth/react";
 import "react-quill/dist/quill.bubble.css";
 
 const WritePage = () => {
   const [open, setOpen] = useState(false);
   const [value,setValue] = useState("")
-  const { status } = useSession();
+  // const { status } = useSession();
 
-  console.log(status, "--StatusData");
+  // console.log(status, "--StatusData");
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  if (status === "loading") {
-    return <div>Loading</div>;
-  }
-  if (status === "authenticated") {
-    console.log("authenticated or not")
-    router.push("/");
-  }
+  // if (status === "loading") {
+  //   return <div>Loading</div>;
+  // }
+  // if (status === "authenticated") {
+  //   console.log("authenticated or not")
+  //   router.push("/");
+  // }
   return (
     <div className="relative flex flex-col bg-blue-400">
       <input

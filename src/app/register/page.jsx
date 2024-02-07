@@ -31,7 +31,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="w-full h-[75vh] bg-blue-300 flex items-center">
+    <div className="w-full h-[75vh] flex items-center">
       <div className="w-full h-full relative hidden lg:block">
         <Image src="/register.png" className="" fill alt="Register pic" />
       </div>

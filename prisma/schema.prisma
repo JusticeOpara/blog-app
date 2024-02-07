@@ -67,7 +67,7 @@ model Category {
 }
 
 model Post {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  id        String    @id @default(cuid()) @map("_id")
   createdAt DateTime  @default(now())
   slug      String    @unique
   title     String
@@ -82,7 +82,7 @@ model Post {
 }
 
 model Comment {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
   desc      String
   userEmail String
